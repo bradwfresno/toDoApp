@@ -12,11 +12,22 @@
 <body>
 
 <input type="text" id="inputToDo">
-<button type="submit"></button>
-<h1 id="todo"></h1>
-<h1 id="done"></h1>
-<ul></ul>
-<ul></ul>
+<button id="submit" type="submit">Submit</button>
+<div class="container text-center">
+    <div class="toDo">
+        <h1 id="todoTitle">ToDo</h1>
+        <ul class="todoList list-group">
+            
+        </ul>
+    </div>
+    <div class="done">
+        <h1 id="doneTitle">Done</h1>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action">done 1</li>
+            <li class="list-group-item list-group-item-action">done 2</li>
+        </ul>
+    </div>
+</div>
    <!-- Java Script  -->
     <script type="text/javascript" src="./js/scripts.js"></script>
 </body>
