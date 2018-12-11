@@ -1,6 +1,6 @@
 //golbals
 const todoList = []
-const doneList = []
+let doneList = []
 const itemName = document.querySelector("#inputTodo");
 const submit = document.querySelector("#submit");
 
@@ -12,7 +12,7 @@ itemName.addEventListener('change',()=>appendlist());
 
 ////Functions
 
-//Clear 
+//Clear Todo
 function clearTodo(){
   const listItems = document.querySelectorAll('.toDo li')
   for (item of listItems) {
@@ -20,7 +20,7 @@ function clearTodo(){
   }
   buildTodo();
 };
-
+//Clear Done
 function clearDone(){
   const listItems = document.querySelectorAll('.done li')
   for (item of listItems) {
@@ -61,10 +61,14 @@ function buildTodo(){
 //Append - Insert
 function appendlist(){
   const todoItem = document.querySelector('#inputTodo')
+  if(todoItem.value){
   todoList.push(todoItem.value);
   itemName.value='';
   clearTodo();
+}
   };
+
+
 
 //Delete Todo
 function deleteItem(){
@@ -81,6 +85,7 @@ function deleteItemDone(){
   const arrIndex = doneList.indexOf(this.parentNode.id);
   doneList.splice(arrIndex,1);
   clearTodo();
+  clearDone();
 };
 
 //Complete
@@ -88,7 +93,9 @@ function complete(){
   const parentLi = this.parentNode;
     parentLi.style.display='none';
   const arrIndex = todoList.indexOf(this.parentNode.id);
-  doneList.push(todoList.splice(arrIndex,1));
+  //console.log((todoList.splice(arrIndex,1))[0])
+ // doneList.push('abc');
+  doneList.push((todoList.splice(arrIndex,1))[0]);
   clearTodo();
   clearDone();
 
@@ -105,9 +112,11 @@ function buildDoneList(){
   const selectBox = document.createElement('input');
     selectBox.type = "checkbox";
     selectBox.id = `cb-${item}`;
-    //selectBox.addEventListener('click', complete)
+    selectBox.checked = true;
+    selectBox.addEventListener('click', unComplete)
   const label = document.createElement('label');
     label.textContent = item;
+    label.className = "strike";
   
 
   const doneUl = document.querySelector('.doneList');
@@ -123,4 +132,21 @@ function buildDoneList(){
     deleteBtn.addEventListener('click', deleteItemDone)
     listItem.appendChild(deleteBtn);
   }
+};
+
+//uncomplete or readd to todoList
+function unComplete(){
+console.log(this.parentNode.id);
+todoList.push(this.parentNode.id);
+const abc123= this.parentNode.id;
+console.log(abc123);
+const arrIndexDone = doneList.indexOf(this.parentNode.id);
+console.log(arrIndexDone)
+console.log(doneList);
+doneList.splice(arrIndexDone,1);
+console.log(doneList);
+this.parentNode.style.display= 'none';
+
+clearTodo();
+clearDone();
 };
