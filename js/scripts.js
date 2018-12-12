@@ -152,9 +152,14 @@ clearDone();
 };
 
 
+function play(){
 //Fluff
 const audio = new Audio('/media/audio_file.mp3');
 audio.play();
+}
+
+const pl = document.querySelector('#mediaimage')
+pl.addEventListener('click',play);
 
 
 
