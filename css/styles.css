@@ -78,7 +78,7 @@ input[type="checkbox"] {
     }
     
     input[type="checkbox"]:checked{
-    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUyl0mo5jHUr5nESd_bTLbADkyh7a4Mb6jlIE5xqWHaA4TlyUG') 0 0px no-repeat;
+    background: url('/media/nuke.jpg') 0 0px no-repeat;
     background-size: 100%;
     height: 40px;
     width: 40px;
@@ -114,10 +114,11 @@ li {
     position: absolute;
     right: 25px;
     bottom: 25px;
-        background-repeat: no-repeat;
+    background-repeat: no-repeat;
     animation: rotation 2s infinite linear;
   }
-    @keyframes rotation {
+
+  @keyframes rotation {
 		from {
 				-webkit-transform: rotate(0deg);
 		}

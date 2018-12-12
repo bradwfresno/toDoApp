@@ -155,11 +155,7 @@ clearDone();
 //Fluff
 const audio = new Audio('/media/audio_file.mp3');
 audio.play();
-const pic1 = document.querySelector('#mediaimage')
-//.addEventListener("click",myFunction());
-function myFunction(){
-  alert('testing 123');
-}
+
 
 
 
