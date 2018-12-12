@@ -10,7 +10,7 @@
 body {
     top: 0;
     background-color:#36538b;
-    background: url('https://cdn.gamerant.com/wp-content/uploads/Vault-Boy-Thumbs-Up.jpg.optimal.jpg') no-repeat bottom center fixed;
+    background: url('/media/back.jpg') no-repeat bottom center fixed;
     background-size: cover;
     width: 800px;
 }
@@ -24,6 +24,14 @@ body {
     display: block;
     width: 500px;
     margin: 100px auto 0
+}
+
+.head > p{
+    color:white;
+}
+
+.head>p>a{
+    color:white;
 }
 
 h1{
@@ -42,8 +50,14 @@ h1{
     
   }
 
+  input[type="text"]{
+      margin-top: 20px;
+      width: 400px;
+  }
+
+
 input[type="checkbox"] {
-    background: url('https://static.thenounproject.com/png/13591-200.png') 0 0px no-repeat;
+    background: url('/media/rad.png') 0 0px no-repeat;
     background-size: 100%;
     z-index: 10;
     display: inline-block;
@@ -70,9 +84,7 @@ input[type="checkbox"] {
     width: 40px;
     border-radius: 10px;
     
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    -ms-appearance:none;
+
     appearance:none;
     }
 
@@ -95,4 +107,24 @@ li {
         text-decoration: line-through;
   }
   
+  #mediaimage{
+    
+    width: 75px;
+    height:75px; 
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+        background-repeat: no-repeat;
+    animation: rotation 2s infinite linear;
+  }
+    @keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
+}
+
+
  
