@@ -41,7 +41,7 @@ function buildTodo(){
     selectBox.addEventListener('click', complete)
   const label = document.createElement('label');
     label.textContent = item
-  
+    label.addEventListener('click',editItem);
 
   const todoUl = document.querySelector('.todoList')
     
@@ -55,6 +55,32 @@ function buildTodo(){
     deleteBtn.className = "btn btn-danger"
     deleteBtn.addEventListener('click', deleteItem)
     listItem.appendChild(deleteBtn);
+
+    //edit ?
+    function editItem(){
+      const editText = document.createElement('input');
+      
+      editText.id = `txt-${item}`;
+      editText.type = 'text'
+      //find the label of the item selected
+        
+
+      editText.value = this.textContent;
+      editText.addEventListener('change',() =>saveEdit(this));
+      listItem.appendChild(editText);
+      this.style.display = 'none'; //
+      deleteBtn.style.display ='none';
+      selectBox.style.display = 'none';
+
+      function saveEdit(that){
+        const arrIndex = todoList.indexOf(that.textContent);
+        todoList.splice(arrIndex,1);
+        todoList.push(editText.value)
+        editText.style.display = 'none'
+        clearTodo();
+      };
+
+    }
   }
 };
 
@@ -73,7 +99,7 @@ function appendlist(){
 //Delete Todo
 function deleteItem(){
     const parentLi = this.parentNode;
-      parentLi.style.display='none';
+    parentLi.style.display='none';
     const arrIndex = todoList.indexOf(this.parentNode.id);
     todoList.splice(arrIndex,1);
     clearTodo();
@@ -81,7 +107,7 @@ function deleteItem(){
 //Delete Done
 function deleteItemDone(){
   const parentLi = this.parentNode;
-    parentLi.style.display='none';
+  parentLi.style.display='none';
   const arrIndex = doneList.indexOf(this.parentNode.id);
   doneList.splice(arrIndex,1);
   clearTodo();
@@ -91,15 +117,13 @@ function deleteItemDone(){
 //Complete
 function complete(){
   const parentLi = this.parentNode;
-    parentLi.style.display='none';
+  parentLi.style.display='none';
   const arrIndex = todoList.indexOf(this.parentNode.id);
   //console.log((todoList.splice(arrIndex,1))[0])
  // doneList.push('abc');
   doneList.push((todoList.splice(arrIndex,1))[0]);
   clearTodo();
   clearDone();
-
-
 };
 
 //Build Done List
@@ -117,10 +141,7 @@ function buildDoneList(){
   const label = document.createElement('label');
     label.textContent = item;
     label.className = "strike";
-  
-
   const doneUl = document.querySelector('.doneList');
-    
     doneUl.appendChild(listItem);
     listItem.appendChild(selectBox);
     listItem.appendChild(label);
@@ -136,20 +157,22 @@ function buildDoneList(){
 
 //uncomplete or readd to todoList
 function unComplete(){
-console.log(this.parentNode.id);
-todoList.push(this.parentNode.id);
-const abc123= this.parentNode.id;
-console.log(abc123);
-const arrIndexDone = doneList.indexOf(this.parentNode.id);
-console.log(arrIndexDone)
-console.log(doneList);
-doneList.splice(arrIndexDone,1);
-console.log(doneList);
-this.parentNode.style.display= 'none';
+  console.log(this.parentNode.id);
+  todoList.push(this.parentNode.id);
+  const abc123= this.parentNode.id;
+  console.log(abc123);
+  const arrIndexDone = doneList.indexOf(this.parentNode.id);
+  console.log(arrIndexDone)
+  console.log(doneList);
+  doneList.splice(arrIndexDone,1);
+  console.log(doneList);
+  this.parentNode.style.display= 'none';
 
-clearTodo();
-clearDone();
+  clearTodo();
+  clearDone();
 };
+
+//Edit
 
 
 function play(){

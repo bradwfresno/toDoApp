@@ -1,4 +1,6 @@
 
+
+
 #top,
 #bottom {
     position: fixed;
@@ -13,6 +15,8 @@ body {
     background: url('/media/back.jpg') no-repeat bottom center fixed;
     background-size: cover;
     width: 800px;
+    min-height: 100%;
+    
 }
 
 .head {
@@ -112,8 +116,8 @@ li {
     width: 75px;
     height:75px; 
     position: absolute;
-    right: 25px;
-    bottom: 25px;
+    right: 4vh;
+    bottom: 4vh;
     background-repeat: no-repeat;
     animation: rotation 2s infinite linear;
   }
