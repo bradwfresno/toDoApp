@@ -1,5 +1,5 @@
 //golbals
-const todoList = []
+let todoList = []
 let doneList = []
 const itemName = document.querySelector("#inputTodo");
 const submit = document.querySelector("#submit");
@@ -184,9 +184,34 @@ audio.play();
 const pl = document.querySelector('#mediaimage')
 pl.addEventListener('click',play);
 
+//auto save
+var autoSave = setInterval(save, 5000);
+function save(){
+   localStorage.setItem('todo',JSON.stringify(todoList));
+   localStorage.setItem('done',JSON.stringify(doneList));
+   
+  
+}
+
+function autoLoad(){
+
+if(localStorage.getItem("todo")){
+
+let savedTodo = JSON.parse(localStorage.getItem("todo"));
+
+todoList = savedTodo
 
 
+}
 
+if(localStorage.getItem("done")){
+let savedDone = JSON.parse(localStorage.getItem("done"));
+doneList = savedDone
+}
+clearTodo();
+clearDone();
+}
+autoLoad();
 
 
 
